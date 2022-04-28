@@ -25,7 +25,7 @@ def get_data():
     ## This function gets the regional grid data from the EIA using API requests
     dfs = []
     for region in regions:
-        api_call = api_call = f'http://api.eia.gov/series/?api_key={api_key}&start={start}&end={end}&series_id=EBA.{region}-ALL.NG.H'
+        api_call = f'https://api.eia.gov/series/?api_key={api_key}&start={start}&end={end}&series_id=EBA.{region}-ALL.NG.H'
         data = np.array(requests.get(api_call).json()['series'][0]['data'])
         timestamps = pd.to_datetime(data[:,0])
         Power = data[:,1].astype(np.float)
